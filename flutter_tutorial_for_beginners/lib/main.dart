@@ -9,10 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green
+        primarySwatch: Colors.green,
       ),
       home: const RootPage(),
     );
@@ -27,11 +27,37 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          debugPrint('Floating Action Button');
+        },
+        child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        onDestinationSelected: (index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        selectedIndex: currentPage,
       ),
     );
   }
