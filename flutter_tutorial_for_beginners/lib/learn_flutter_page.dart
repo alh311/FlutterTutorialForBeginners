@@ -21,6 +21,17 @@ class _LearnFlutterPageState extends State<LearnFlutterPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
+      body: Column(
+        children: [
+          Image.asset('images/einstein.jpeg'),
+          const SizedBox(
+            height: 10,
+          ),
+          const Divider(
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 }
